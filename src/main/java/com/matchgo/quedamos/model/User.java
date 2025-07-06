@@ -43,4 +43,14 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Pledge> pledges = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }
