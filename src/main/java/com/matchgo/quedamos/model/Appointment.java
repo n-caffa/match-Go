@@ -13,23 +13,33 @@ import java.time.LocalDateTime;
 @Builder
 public class Appointment {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
 
-    @ManyToOne
-    private User creator;
+        private String title;
 
-    @ManyToOne
-    private User receiver;
+        private String description;
 
-    private String location;
+        private String location;
 
-    private LocalDateTime dateTime;
+        private LocalDateTime dateTime;
 
-    @Enumerated(EnumType.STRING)
-    private AppointmentStatus status;
+        private Double deposit;
+
+        @Enumerated(EnumType.STRING)
+        private AppointmentStatus status;
+
+        @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "creator_id", nullable = false)
+        private User creator;
+
+        @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "guest_id", nullable = false)
+        private User guest;
 
     private boolean checkedInCreator;
     private boolean checkedInReceiver;
-}
+
+    }
+
