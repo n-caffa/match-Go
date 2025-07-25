@@ -49,7 +49,7 @@ public class UserService {
             throw new BadCredentialsException("Email o contraseña incorrectos");
         }
 
-        String token = jwtService.generateToken(String.valueOf(user));
+        String token = jwtService.generateToken(user.getEmail());
         log.info("Login exitoso para: {}", user.getEmail());
 
         return token;
